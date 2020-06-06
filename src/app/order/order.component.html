@@ -1,1 +1,27 @@
-<h2>Order</h2>
+<h2>Zamówienie</h2>
+
+<div>
+    <form novalidate class="simple-form">
+        <label>Imię: <input type="text" ng-model="$ctrl.order.name" /></label><br />
+        <label>Wiek: <input type="number" ng-model="$ctrl.order.age" /></label><br /><br />
+
+        <div>
+            Dodaj:<br />
+
+            Rozmiar:
+            <select ng-model="$ctrl.temporaryItem.size">
+                <option ng-repeat="(key, answer) in $ctrl.itemSizes" value="{{ key }}"> {{answer}}</option>
+            </select><br />
+
+            Kolor:
+            <label ng-repeat="(key, answer) in $ctrl.itemColors"><input type="radio" value="{{ key }}"
+                    ng-model="$ctrl.temporaryItem.color" />{{answer}}</label>
+            <br />
+
+            <button ng-click="$ctrl.addItem($ctrl.temporaryItem)">Dodaj!</button>
+        </div>
+        <input type="submit" ng-click="$ctrl.send($ctrl.order)" value="Wyślij!" />
+    </form>
+
+    <app-item-list items="$ctrl.order.items"></app-item-list>
+</div>
