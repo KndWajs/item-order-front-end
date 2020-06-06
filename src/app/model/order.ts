@@ -5,4 +5,8 @@ export class Order {
   name: string;
   age: number;
   items: Item[];
+
+  constructor() {
+    this.items = new Array();
+  }
 }

@@ -7,7 +7,8 @@ import { Component } from 'angular-ts-decorators';
   styles: [require('./app.component.scss')]
 })
 export class AppComponent {
-  title = 'Zamów koszulki!';
+  title = 'Zamów już teraz! W ulubionym kolorze oraz dopasowanym rozmiarze!';
 
   constructor(private $state: StateService) {}
+
 }
