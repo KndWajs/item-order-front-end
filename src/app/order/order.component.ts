@@ -1,5 +1,5 @@
 import { Component, OnInit } from 'angular-ts-decorators';
-import { Order } from '../order';
+import { Order } from '../model/order';
 
 @Component({
   selector: 'app-order',
