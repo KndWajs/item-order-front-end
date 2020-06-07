@@ -25,7 +25,7 @@
                 Kolor: <select ng-model="$ctrl.temporaryItem.color" ng-options="key as answer for (key, answer) in $ctrl.itemColors">
                 </select>
             </div>
-            <button class="button-primary" ng-click="$ctrl.addItem($ctrl.temporaryItem)">Dodaj!</button>
+            <button class="button-primary" ng-click="$ctrl.addItem($ctrl.temporaryItem); orderForm.$pristine = false">Dodaj!</button>
         </div>
 
         <app-item-list items="$ctrl.order.items"></app-item-list>
