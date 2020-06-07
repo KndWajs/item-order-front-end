@@ -10,7 +10,6 @@ import { OrderService } from '../order.service';
 export class SummaryComponent implements OnInit {
   public orders: Order[];
   public focusedOrderId: number;
-  public orderItems
 
   /*@ngInject*/
   constructor(private orderService: OrderService) { }
@@ -20,6 +19,7 @@ export class SummaryComponent implements OnInit {
 
   getOrders(): void {
     this.orderService.getAllOrders().then(orders => this.orders = orders);
+    this.focusedOrderId = null;
   }
 
   toggleItemList(orderId: number) {
