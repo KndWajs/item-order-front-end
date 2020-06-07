@@ -12,26 +12,34 @@ import { OrderService } from '../order.service';
 })
 export class OrderComponent implements OnInit {
   public order: Order;
-  public temporaryItem: Item;
-  public itemSizes: string[] = Object(ItemSize);
-  public itemColors: string[] = Object(ItemColor);
+  public temporaryItem: any;
+  public itemSizes = ItemSize;
+  public itemColors = ItemColor;
 
   constructor(private orderService: OrderService) {
     this.order = new Order();
-    this.temporaryItem = new Item();
   }
 
   ngOnInit() {
+    this.setDefaultTemporaryItem();
   }
 
   addItem(item: Item): void {
     this.order.items.push(item);
-    this.temporaryItem = new Item();
+    this.setDefaultTemporaryItem();
   }
 
-  send(order: Order): void {
-    console.log(order);
-    console.log(this.orderService.addOrder(order));
+  send(order: Order, form: any): void {
+    this.orderService.addOrder(order);
     this.order = new Order();
+    form.$setPristine();
+    form.$setUntouched();
+    this.setDefaultTemporaryItem();
+  }
+
+  setDefaultTemporaryItem(): void {
+    this.temporaryItem = new Item();
+    this.temporaryItem.size = 'S';
+    this.temporaryItem.color = 'BLUE';
   }
 }

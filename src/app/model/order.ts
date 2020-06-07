@@ -4,6 +4,7 @@ export class Order {
   id: number;
   name: string;
   age: number;
+  creationDate: Date;
   items: Item[];
 
   constructor() {
