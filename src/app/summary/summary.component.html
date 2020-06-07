@@ -1,1 +1,25 @@
 <h3>Podsumowanie</h3>
+<div class="summary-box">
+    <button class="button-primary" ng-click="$ctrl.getOrders()">Szukaj!</button>
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Wiek</th>
+                <th>Data zamówienia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat-start="order in $ctrl.orders" ng-click="$ctrl.toggleItemList(order.id)" >
+                <td>{{order.name}}</td>
+                <td>{{order.age}}</td>
+                <td>{{order.creationDate | date: 'MMM d, yy, H:mm '}}</td>
+            </tr>
+            <tr ng-repeat-end ng-show="$ctrl.focusedOrderId == order.id">
+                <td colspan="3">
+                    <app-item-list items="order.items"></app-item-list>                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
