@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from 'angular-ts-decorators';
+import { Component, Input, OnInit } from 'angular-ts-decorators';
 import { Item } from '../model/item';
+import { ItemColor } from '../model/item-color';
+import { ItemSize } from '../model/item-size';
 
 @Component({
   selector: 'app-item-list',
@@ -13,5 +15,13 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getColorDescription(color: any): string {
+    return ItemColor[color];
+  }
+
+  getSizeDescription(size: any): string {
+    return ItemSize[size];
   }
 }

@@ -1,27 +1,36 @@
-<h2>Zamówienie</h2>
-
+<h3>Zamówienie</h3>
 <div>
-    <form novalidate class="simple-form">
-        <label>Imię: <input type="text" ng-model="$ctrl.order.name" /></label><br />
-        <label>Wiek: <input type="number" ng-model="$ctrl.order.age" /></label><br /><br />
-
-        <div>
-            Dodaj:<br />
-
-            Rozmiar:
-            <select ng-model="$ctrl.temporaryItem.size">
-                <option ng-repeat="(key, answer) in $ctrl.itemSizes" value="{{ key }}"> {{answer}}</option>
-            </select><br />
-
-            Kolor:
-            <label ng-repeat="(key, answer) in $ctrl.itemColors"><input type="radio" value="{{ key }}"
-                    ng-model="$ctrl.temporaryItem.color" />{{answer}}</label>
-            <br />
-
-            <button ng-click="$ctrl.addItem($ctrl.temporaryItem)">Dodaj!</button>
+    <form class="order-form" name="orderForm">
+        <div class="order-box">
+            <div class="order-box-parameter">
+                <h4>Twoje dane:</h5>
+            </div>
+            <div class="order-box-parameter">
+                Imię: <label><input type="text" ng-model="$ctrl.order.name" required/></label>
+            </div>
+            <div class="order-box-parameter">
+                Wiek: <label><input type="number" ng-model="$ctrl.order.age" required/></label>
+            </div>
         </div>
-        <input type="submit" ng-click="$ctrl.send($ctrl.order)" value="Wyślij!" />
-    </form>
 
-    <app-item-list items="$ctrl.order.items"></app-item-list>
+        <div class="order-box">
+            <div class="order-box-parameter">
+                <h4>Wybierz kolor i rozmiar:</h5>
+            </div>
+            <div class="order-box-parameter space-between">
+                Rozmiar: <label ng-repeat="(key, answer) in $ctrl.itemSizes"><input type="radio" value="{{ key }}"
+                        ng-model="$ctrl.temporaryItem.size" />{{answer}}</label>
+            </div>
+            <div class="order-box-parameter">
+                Kolor: <select ng-model="$ctrl.temporaryItem.color">
+                    <option ng-repeat="(key, answer) in $ctrl.itemColors" value="{{ key }}"> {{answer}}</option>
+                </select>
+            </div>
+            <button class="button-primary" ng-click="$ctrl.addItem($ctrl.temporaryItem)">Dodaj!</button>
+        </div>
+
+        <app-item-list items="$ctrl.order.items"></app-item-list>
+
+        <input class="button-primary submit" type="submit" ng-click="orderForm.$valid && $ctrl.order.items.length > 0 && $ctrl.send($ctrl.order)" value="Wyślij!" />
+    </form>
 </div>

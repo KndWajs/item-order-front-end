@@ -1,7 +1,16 @@
-<h1>{{$ctrl.title}}</h1>
-<nav>
-  <a ui-sref="order">Zamówienie</a>
-  <a ui-sref="summary">Podsumowanie</a>
-</nav>
-<ui-view></ui-view>
-<app-messages></app-messages>
+<div class="header">
+  <h2>Zamów już teraz!</h2>
+  <h4>W ulubionym kolorze oraz dopasowanym rozmiarze!</h4>
+  <hr>
+</div>
+<div class="navbar">
+  <button class="button-primary navbar-button" ui-sref="order">Zamówienie</button>  
+  <button class="button-primary navbar-button" ui-sref="summary">Podsumowanie</button>
+</div>
+<div class="content">
+  <hr>
+  <ui-view></ui-view>
+</div>
+<div class="footer">
+  <app-messages></app-messages>
+</div>

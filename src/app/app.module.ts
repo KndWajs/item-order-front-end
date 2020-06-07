@@ -6,6 +6,7 @@ import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { OrderService } from './order.service';
 import { OrderComponent } from './order/order.component';
+import './style.css';
 import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({

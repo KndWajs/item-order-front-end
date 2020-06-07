@@ -1,18 +1,19 @@
-<div>
-    <div>
-        <div>
-            Rozmiar
-        </div>
-        <div>
-            Kolor
-        </div>
+<div class="item-box">
+    <div >
+        <h4>Koszyk:</h5>
     </div>
-    <div ng-repeat="item in $ctrl.items">
-        <div>
-            {{item.size}}
-        </div>
-        <div>
-            {{item.color}}
-        </div>
-    </div>
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <th>Rozmiar</th>
+                <th>Kolor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.items" >
+                <td>{{$ctrl.getSizeDescription(item.size)}}</td>
+                <td>{{$ctrl.getColorDescription(item.color)}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
