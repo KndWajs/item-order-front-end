@@ -13,6 +13,8 @@ import { OrderService } from '../order.service';
 export class OrderComponent implements OnInit {
   public order: Order;
   public temporaryItem: any;
+  public itemNotAvaliable: boolean;
+  public updatingBasket;
   public itemSizes = ItemSize;
   public itemColors = ItemColor;
 
@@ -25,8 +27,17 @@ export class OrderComponent implements OnInit {
   }
 
   addItem(item: Item): void {
-    this.order.items.push(item);
-    this.setDefaultTemporaryItem();
+    this.updatingBasket = true;
+    this.orderService.checkItemAvailability(item).then(amount => {
+      if (this.checkItemAvailability(amount)) {
+        this.order.items.push(item);
+        this.setDefaultTemporaryItem();
+        this.updatingBasket = false;
+      } else {
+        this.itemNotAvaliable = true;
+        this.updatingBasket = false;
+      }
+    });
   }
 
   send(order: Order, form: any): void {
@@ -41,5 +52,17 @@ export class OrderComponent implements OnInit {
     this.temporaryItem = new Item();
     this.temporaryItem.size = 'S';
     this.temporaryItem.color = 'BLUE';
+    this.itemNotAvaliable = false;
   }
+
+  checkItemAvailability(amountInStore: number): boolean {
+    const item: Item = new Item();
+    item.color = this.temporaryItem.color;
+    item.size = this.temporaryItem.size;
+    const amountInBasket: number = this.order.items.filter(i => i.color === item.color && i.size === item.size).length;
+
+    return amountInStore - amountInBasket > 0;
+  }
+
 }
+
