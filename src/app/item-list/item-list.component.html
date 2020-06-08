@@ -7,12 +7,14 @@
             <tr>
                 <th>Rozmiar</th>
                 <th>Kolor</th>
+                <th>Podgląd</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in $ctrl.items" >
                 <td>{{$ctrl.getSizeDescription(item.size)}}</td>
                 <td>{{$ctrl.getColorDescription(item.color)}}</td>
+                <td><app-item-preview item="item"></app-item-list></td>
             </tr>
         </tbody>
     </table>

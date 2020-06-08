@@ -22,18 +22,21 @@
                 <h4>Wybierz kolor i rozmiar:</h5>
             </div>
             <div class="order-box-parameter space-between">
-                Rozmiar: <label ng-repeat="(key, answer) in $ctrl.itemSizes" ng-click="$ctrl.itemNotAvaliable = false"><input
-                        type="radio" value="{{ key }}" ng-model="$ctrl.temporaryItem.size" />{{answer}}</label>
+                Rozmiar: <label ng-repeat="(key, answer) in $ctrl.itemSizes"
+                    ng-click="$ctrl.itemNotAvaliable = false"><input type="radio" value="{{ key }}"
+                        ng-model="$ctrl.temporaryItem.size" />{{answer}}</label>
             </div>
-            <div class="order-box-parameter">
+            <div class="order-box-parameter space-between">
                 Kolor: <select ng-model="$ctrl.temporaryItem.color" ng-click="$ctrl.itemNotAvaliable = false"
                     ng-options="key as answer for (key, answer) in $ctrl.itemColors">
                 </select>
+                <app-item-preview item="$ctrl.temporaryItem">
+                    </app-item-list>
             </div>
             <span ng-show="$ctrl.itemNotAvaliable">Ten wariant nie jest już dostępny!</span>
             <button class="button-primary" ng-show="!$ctrl.updatingBasket"
                 ng-click="$ctrl.addItem($ctrl.temporaryItem); orderForm.$pristine = false">Dodaj!</button>
-                <button class="button-primary" ng-show="$ctrl.updatingBasket" >Dodawanie...</button>               
+            <button class="button-primary" ng-show="$ctrl.updatingBasket">Dodawanie...</button>
         </div>
 
         <app-item-list items="$ctrl.order.items"></app-item-list>
