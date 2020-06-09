@@ -6,15 +6,18 @@
                 <h4>Twoje dane:</h5>
             </div>
             <div class="order-box-parameter">
-                Imię: <label><input name="name" type="text" ng-model="$ctrl.order.name" required="" /></label>
+                Imię: <label><input name="name" pattern="^[A-Z][a-z]*" type="text" ng-model="$ctrl.order.name"
+                        required="" /></label>
             </div>
+            <label ng-show="orderForm.name.$error.pattern">Tylko jeden wyraz, pisany z wielkiej litery, bez cyfr i
+                znaków specjalnych!</label>
             <div class="order-box-parameter">
                 Wiek: <label><input name="age" type="number" ng-model="$ctrl.order.age" required="" min="18" max="100"
                         integer /></label>
-                <span ng-show="orderForm.age.$error.integer">Wiek powinien być liczbą!</span>
-                <span ng-show="orderForm.age.$error.min || orderForm.age.$error.max">Wiek powinien być w zakresie
-                    18-100!</span>
             </div>
+            <span ng-show="orderForm.age.$error.integer">Wiek powinien być liczbą!</span>
+            <span ng-show="orderForm.age.$error.min || orderForm.age.$error.max">Wiek powinien być w zakresie
+                18-100!</span>
         </div>
 
         <div class="order-box">

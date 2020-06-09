@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  endpoint: 'http://localhost:8080/'
+  endpoint: 'http://itemorder-env.eba-njchqbde.eu-central-1.elasticbeanstalk.com/'
 };
